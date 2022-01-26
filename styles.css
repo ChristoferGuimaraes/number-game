@@ -1,0 +1,87 @@
+.led-numbers .numbers::before,
+.led-numbers .numbersr::after,
+.led-numbers .minute::before,
+.led-numbers .minute::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  width: 20px;
+  height: 20px;
+  background-color: #000000;
+}
+
+.led-numbers .numbers::before,
+.led-numbers .minute::before {
+  top: 80px;
+}
+
+.led-numbers .numbers::after,
+.led-numbers .minute::after {
+  top: 180px;
+}
+
+.led-numbers svg {
+  display: inline-block;
+  margin: 10px;
+}
+
+.led-numbers svg .segment {
+  fill: rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease-in-out;
+}
+
+.led-numbers svg.num-1 .b,
+.led-numbers svg.num-1 .c,
+.led-numbers svg.num-2 .a,
+.led-numbers svg.num-2 .b,
+.led-numbers svg.num-2 .d,
+.led-numbers svg.num-2 .e,
+.led-numbers svg.num-2 .g,
+.led-numbers svg.num-3 .a,
+.led-numbers svg.num-3 .b,
+.led-numbers svg.num-3 .c,
+.led-numbers svg.num-3 .d,
+.led-numbers svg.num-3 .g,
+.led-numbers svg.num-4 .b,
+.led-numbers svg.num-4 .c,
+.led-numbers svg.num-4 .f,
+.led-numbers svg.num-4 .g,
+.led-numbers svg.num-5 .a,
+.led-numbers svg.num-5 .c,
+.led-numbers svg.num-5 .d,
+.led-numbers svg.num-5 .f,
+.led-numbers svg.num-5 .g,
+.led-numbers svg.num-6 .a,
+.led-numbers svg.num-6 .c,
+.led-numbers svg.num-6 .d,
+.led-numbers svg.num-6 .e,
+.led-numbers svg.num-6 .f,
+.led-numbers svg.num-6 .g,
+.led-numbers svg.num-7 .a,
+.led-numbers svg.num-7 .b,
+.led-numbers svg.num-7 .c,
+.led-numbers svg.num-8 .a,
+.led-numbers svg.num-8 .b,
+.led-numbers svg.num-8 .c,
+.led-numbers svg.num-8 .d,
+.led-numbers svg.num-8 .e,
+.led-numbers svg.num-8 .f,
+.led-numbers svg.num-8 .g,
+.led-numbers svg.num-9 .a,
+.led-numbers svg.num-9 .b,
+.led-numbers svg.num-9 .c,
+.led-numbers svg.num-9 .d,
+.led-numbers svg.num-9 .f,
+.led-numbers svg.num-9 .g,
+.led-numbers svg.num-0 .a,
+.led-numbers svg.num-0 .b,
+.led-numbers svg.num-0 .c,
+.led-numbers svg.num-0 .d,
+.led-numbers svg.num-0 .e,
+.led-numbers svg.num-0 .f {
+  fill: #000000;
+}
+
+#second-number, #third-number {
+    display: none;
+}
