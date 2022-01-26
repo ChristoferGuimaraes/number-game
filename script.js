@@ -73,10 +73,11 @@ function setLedNumbers() {
     numberLedTree.style.display = "none";
   }
 
-  if (arrayNumbers.length > 1) {
+  if (arrayNumbers.length > 1 && arrayNumbers.length <= 2) {
     numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
     numberLedTwo.setAttribute("class", "num-" + arrayNumbers[1]);
     numberLedTwo.style.display = "inline-flex";
+    numberLedTree.style.display = "none";
   }
 
   if (arrayNumbers.length > 2) {
@@ -84,6 +85,7 @@ function setLedNumbers() {
     numberLedTwo.setAttribute("class", "num-" + arrayNumbers[1]);
     numberLedTree.setAttribute("class", "num-" + arrayNumbers[2]);
     numberLedTree.style.display = "inline-flex";
+    numberLedTwo.style.display = "inline-flex";
   }
 }
 

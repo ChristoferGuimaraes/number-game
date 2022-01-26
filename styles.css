@@ -1,13 +1,17 @@
-.led-numbers .numbers::before,
-.led-numbers .numbersr::after,
-.led-numbers .minute::before,
-.led-numbers .minute::after {
-  content: "";
-  position: absolute;
-  right: -40px;
-  width: 20px;
-  height: 20px;
-  background-color: #000000;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
 }
 
 .led-numbers .numbers::before,
@@ -22,7 +26,7 @@
 
 .led-numbers svg {
   display: inline-block;
-  margin: 10px;
+  margin: 5px;
 }
 
 .led-numbers svg .segment {
@@ -82,6 +86,40 @@
   fill: #000000;
 }
 
-#second-number, #third-number {
-    display: none;
+#second-number,
+#third-number {
+  display: none;
+  text-align: center;
 }
+
+.game-container {
+  margin: 0px auto;
+  border: 1px solid;
+  width: 450px;
+  padding: 10px;
+}
+
+.inputs-container {
+    text-align: center;
+}
+
+#num {
+    outline: none;
+    border: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#sub {
+    padding: 11px;
+    border: none;
+    border: 1px solid;
+    border-radius: 4px;
+    background-color:chocolate;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+

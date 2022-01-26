@@ -13,8 +13,6 @@
 <body>
     <div class="game-container">
         <div id='render-result'></div>
-        <input type="number" id="num">
-        <button id="sub" onclick="getNumber()">Enviar</button>
         <div class="led-numbers">
             <svg width="0" height="0" viewBox="0 0 0 0">
                 <defs>
@@ -27,7 +25,7 @@
                 </defs>
             </svg>
             <div class="numbers">
-                <svg id="first-number" class="num-0" width="130" height="240" viewBox="0 0 260 480">
+                <svg id="first-number" class="num-0" width="90" height="200" viewBox="0 0 260 480">
                     <use xlink:href="#unit-h" class="segment a" x="30" y="0"></use>
                     <use xlink:href="#unit-v" class="segment b" x="220" y="30"></use>
                     <use xlink:href="#unit-v" class="segment c" x="220" y="250"></use>
@@ -36,7 +34,7 @@
                     <use xlink:href="#unit-v" class="segment f" x="0" y="30"></use>
                     <use xlink:href="#unit-h" class="segment g" x="30" y="220"></use>
                 </svg>
-                <svg id="second-number" class="num-0" width="130" height="240" viewBox="0 0 260 480">
+                <svg id="second-number" class="num-0" width="90" height="200" viewBox="0 0 260 480">
                     <use xlink:href="#unit-h" class="segment a" x="30" y="0"></use>
                     <use xlink:href="#unit-v" class="segment b" x="220" y="30"></use>
                     <use xlink:href="#unit-v" class="segment c" x="220" y="250"></use>
@@ -45,7 +43,7 @@
                     <use xlink:href="#unit-v" class="segment f" x="0" y="30"></use>
                     <use xlink:href="#unit-h" class="segment g" x="30" y="220"></use>
                 </svg>
-                <svg id="third-number" class="num-0" width="130" height="240" viewBox="0 0 260 480">
+                <svg id="third-number" class="num-0" width="90" height="200" viewBox="0 0 260 480">
                     <use xlink:href="#unit-h" class="segment a" x="30" y="0"></use>
                     <use xlink:href="#unit-v" class="segment b" x="220" y="30"></use>
                     <use xlink:href="#unit-v" class="segment c" x="220" y="250"></use>
@@ -56,6 +54,12 @@
                 </svg>
             </div>
         </div>
+        <div class="inputs-container">
+            <input type="number" id="num" placeholder="Digite o palpite">
+            <button id="sub" onclick="getNumber()">ENVIAR</button>
+        </div>
+
+
     </div>
 </body>
 <script src="script.js"></script>
