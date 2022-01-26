@@ -1,37 +1,55 @@
-const res = document.querySelector("#render-results");
 const url =
   "https://us-central1-ss-devops.cloudfunctions.net/rand?min=1&max=300";
+const result = document.querySelector("#render-result");
 const num = document.querySelector("#num");
 const sub = document.querySelector("#sub");
 const numberLedOne = document.querySelector("#first-number");
 const numberLedTwo = document.querySelector("#second-number");
 const numberLedTree = document.querySelector("#third-number");
 let errorValue;
-let arrayNumbers = [];
+let arrayNumbers;
+let correctNumber;
+let objError;
 
 async function getData() {
   await fetch(url)
     .then((res) => {
       if (!res.ok) {
         return res.text().then((text) => {
-          throw new Error(text);
+          throw new Error((errorValue = text));
         });
       } else {
         return res.json();
       }
     })
     .then((data) => {
-      console.log(data);
+      correctNumber = data.value;
+      console.log(data.value);
     })
     .catch((error) => {
-      errorValue = [error];
-
-      console.log(errorValue);
+      console.log(error);
+      getError();
     });
 }
 
-function getError(err) {
-  console.error(err);
+function getAnswer(number) {
+  let yourNumber = Number(number.value);
+
+  correctNumber === yourNumber && (result.innerHTML = "correct");
+
+  if (yourNumber < correctNumber) {
+    return (result.innerHTML = "é maior");
+  }
+  if (yourNumber > correctNumber) {
+    return (result.innerHTML = "é menor");
+  }
+}
+
+function getError() {
+  objError = JSON.parse(errorValue);
+  console.log(objError);
+
+  result.innerHTML = objError.StatusCode;
 }
 
 function getNumber() {
@@ -39,14 +57,13 @@ function getNumber() {
 
   splitToDigit(num);
   setLedNumbers();
+  getAnswer(num);
 }
 
 function splitToDigit(number) {
   (number.value + "").split("").map((num) => {
     arrayNumbers.push(num);
-    //arrayNumber.length > 1 ? document.querySelector("#first-number").setAttribute("class","num-"`${num}`) : ''
   });
-  console.log(arrayNumbers);
 }
 
 function setLedNumbers() {
