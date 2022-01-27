@@ -14,6 +14,7 @@ input::-webkit-inner-spin-button {
 body {
   display: flex;
   justify-content: center;
+  font-family: "Montserrat", sans-serif;
 }
 
 .led-numbers .numbers::before,
@@ -85,7 +86,7 @@ body {
 .led-numbers svg.num-0 .d,
 .led-numbers svg.num-0 .e,
 .led-numbers svg.num-0 .f {
-  fill: #000000;
+  fill: #272b32;
 }
 
 #second-number,
@@ -96,14 +97,16 @@ body {
 
 .game-container {
   margin: 0px auto;
-  border: 1px solid;
-  width: 450px;
+  border: 8px solid #e5e5e5;
+  width: 300px;
   padding: 10px;
   margin-top: 150px;
+  background-image: linear-gradient(#eeee, #fff);
 }
 
 .inputs-container {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 #num {
@@ -119,20 +122,46 @@ body {
   border: none;
   border: 1px solid;
   border-radius: 4px;
-  background-color: chocolate;
+  background-image: linear-gradient(#da722d, #b7723a);
   color: white;
   cursor: pointer;
   font-size: 13px;
 }
 
 .title-container {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    text-align: center;
-    font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  font-size: 24px;
+  margin-top: 50px;
+  letter-spacing: -1px;
+  background-image: linear-gradient(#d5793d, #b7723a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.title-container:after {
+  content: "";
+  width: 215px;
+  height: 1.5px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: #ccc;
+  border-radius: 5px;
 }
 
 .numbers {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
+  margin-bottom: 90px;
+}
+
+#render-result {
+  margin-top: 90px;
+  font-weight: 700;
+  text-align: center;
+  height: 20px;
 }

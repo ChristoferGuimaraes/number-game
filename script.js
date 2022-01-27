@@ -7,7 +7,7 @@ const numberLedOne = document.querySelector("#first-number");
 const numberLedTwo = document.querySelector("#second-number");
 const numberLedTree = document.querySelector("#third-number");
 let errorValue;
-let arrayNumbers;
+let arrayNumbers = []
 let correctNumber;
 let objError;
 
@@ -29,39 +29,39 @@ async function getData() {
     .catch((error) => {
       console.log(error);
       getError();
+      setLedNumbers()
     });
 }
 
 function getAnswer(number) {
   let yourNumber = Number(number.value);
 
-  correctNumber === yourNumber && (result.innerHTML = "correct");
+  correctNumber === yourNumber && (result.innerHTML = "Você acertou!!!!!");
 
   if (yourNumber < correctNumber) {
-    return (result.innerHTML = "é maior");
+    return (result.innerHTML = "É maior");
   }
   if (yourNumber > correctNumber) {
-    return (result.innerHTML = "é menor");
+    return (result.innerHTML = "É menor");
   }
 }
 
 function getError() {
   objError = JSON.parse(errorValue);
-  console.log(objError);
-
-  result.innerHTML = objError.StatusCode;
+  result.innerHTML = 'ERRO'
+  splitToDigit(objError.StatusCode);
 }
 
 function getNumber() {
   arrayNumbers = [];
 
-  splitToDigit(num);
+  splitToDigit(num.value);
   setLedNumbers();
   getAnswer(num);
 }
 
 function splitToDigit(number) {
-  (number.value + "").split("").map((num) => {
+  (number + "").split("").map((num) => {
     arrayNumbers.push(num);
   });
 }
