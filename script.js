@@ -7,10 +7,8 @@ const numberLedOne = document.querySelector("#first-number");
 const numberLedTwo = document.querySelector("#second-number");
 const numberLedTree = document.querySelector("#third-number");
 const rematch = document.querySelector("#rematch-btn");
+const rootCss = document.querySelector(":root");
 
-const allSegments = document.querySelectorAll(
-  ".num-0, .num-1, .num-2, .num-3, .num-4, .num-5, .num-6, .num-7, .num-8, .num-9"
-);
 let errorValue;
 let arrayNumbers = [];
 let correctNumber;
@@ -56,6 +54,7 @@ function getCorrectAnswer() {
   disableInputs();
   result.innerHTML = "Você acertou!!!!!";
   result.style.color = "#5dba38";
+  rootCss.style.setProperty("--smoothblack", "#5dba38");
   rematch.style.display = "block";
 }
 
@@ -64,7 +63,7 @@ function getError() {
   result.innerHTML = "ERRO";
   result.style.color = "#bf401f";
   rematch.style.display = "block";
-  console.log(`Error: ${objError.StatusCode} - ${objError.Error}`);
+  rootCss.style.setProperty("--smoothblack", "#bf401f");
   splitToDigit(objError.StatusCode);
   disableInputs();
 }
@@ -99,17 +98,12 @@ function splitToDigit(number) {
   });
 }
 
-function changeColorSegments() {
-  Array.from(allSegments).map((segment) => {
-    console.log(segment.childNodes);
-  });
-}
-
 function setLedNumbers() {
   if (arrayNumbers.length === 1) {
     numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
     numberLedTwo.style.display = "none";
     numberLedTree.style.display = "none";
+    allSegments.style.fill = "red";
     changeColorSegments();
   }
 
@@ -135,6 +129,7 @@ function playAgain() {
   rematch.style.display = "none";
   numberLedTwo.style.display = "none";
   numberLedTree.style.display = "none";
+  rootCss.style.setProperty("--smoothblack", "#272b32");
   numberLedOne.setAttribute("class", "num-0");
   numberLedTwo.setAttribute("class", "num-0");
   numberLedTree.setAttribute("class", "num-0");

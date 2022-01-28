@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;700&family=Quantico&display=swap");
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+:root {
+  --smoothblack: #272b32;
 }
 
 * {
@@ -185,7 +183,7 @@ body {
 .led-numbers svg.num-0 .d,
 .led-numbers svg.num-0 .e,
 .led-numbers svg.num-0 .f {
-  fill: #272b32;
+  fill: var(--smoothblack);
 }
 
 #second-number,
@@ -210,4 +208,10 @@ body {
 .svg-icon circle {
   stroke: #fff;
   stroke-width: 1;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
