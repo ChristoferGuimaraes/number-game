@@ -30,7 +30,8 @@ async function getData() {
     .then((data) => {
       correctNumber = data.value;
     })
-    .catch(() => {
+    .catch((error) => {
+      console.error(error);
       getError();
       setLedNumbers();
     });
@@ -63,9 +64,9 @@ function getError() {
   result.innerHTML = "ERRO";
   result.style.color = "#bf401f";
   rematch.style.display = "block";
+  console.log(`Error: ${objError.StatusCode} - ${objError.Error}`);
   splitToDigit(objError.StatusCode);
   disableInputs();
-  console.log(`Error: ${objError.StatusCode} - ${objError.Error}`);
 }
 
 function disableInputs() {
@@ -112,14 +113,14 @@ function setLedNumbers() {
     changeColorSegments();
   }
 
-  if (arrayNumbers.length > 1 && arrayNumbers.length <= 2) {
+  if (arrayNumbers.length === 2) {
     numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
     numberLedTwo.setAttribute("class", "num-" + arrayNumbers[1]);
     numberLedTwo.style.display = "inline-flex";
     numberLedTree.style.display = "none";
   }
 
-  if (arrayNumbers.length > 2) {
+  if (arrayNumbers.length === 3) {
     numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
     numberLedTwo.setAttribute("class", "num-" + arrayNumbers[1]);
     numberLedTree.setAttribute("class", "num-" + arrayNumbers[2]);
