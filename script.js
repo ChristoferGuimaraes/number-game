@@ -6,14 +6,11 @@ const sub = document.querySelector("#sub");
 const numberLedOne = document.querySelector("#first-number");
 const numberLedTwo = document.querySelector("#second-number");
 const numberLedTree = document.querySelector("#third-number");
-const aSegment = document.querySelector(".a");
-const bSegment = document.querySelector(".b");
-const cSegment = document.querySelector(".c");
-const dSegment = document.querySelector(".d");
-const eSegment = document.querySelector(".e");
-const fSegment = document.querySelector(".f");
-const gSegment = document.querySelector(".b");
-const allSegments = document.querySelectorAll(".num-0, .num-1, .num-2, .num-3, .num-4, .num-5, .num-6, .num-7, .num-8, .num-9");
+const rematch = document.querySelector("#rematch-btn");
+
+const allSegments = document.querySelectorAll(
+  ".num-0, .num-1, .num-2, .num-3, .num-4, .num-5, .num-6, .num-7, .num-8, .num-9"
+);
 let errorValue;
 let arrayNumbers = [];
 let correctNumber;
@@ -44,8 +41,9 @@ function getAnswer(number) {
   let yourNumber = Number(number.value);
 
   if (correctNumber === yourNumber) {
-    result.innerHTML = "Você acertou!!!!!"
-    result.style.color = '#5dba38'
+    result.innerHTML = "Você acertou!!!!!";
+    result.style.color = "#5dba38";
+    rematch.style.display = "block";
   }
 
   if (yourNumber < correctNumber) {
@@ -59,7 +57,8 @@ function getAnswer(number) {
 function getError() {
   objError = JSON.parse(errorValue);
   result.innerHTML = "ERRO";
-  result.style.color = "#bf401f"
+  result.style.color = "#bf401f";
+  rematch.style.display = "inline-flex";
   splitToDigit(objError.StatusCode);
 }
 
@@ -78,10 +77,9 @@ function splitToDigit(number) {
 }
 
 function changeColorSegments() {
-  
   Array.from(allSegments).map((segment) => {
-    console.log((segment.childNodes))
-  })
+    console.log(segment.childNodes);
+  });
 }
 
 function setLedNumbers() {
@@ -89,7 +87,7 @@ function setLedNumbers() {
     numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
     numberLedTwo.style.display = "none";
     numberLedTree.style.display = "none";
-    changeColorSegments()
+    changeColorSegments();
   }
 
   if (arrayNumbers.length > 1 && arrayNumbers.length <= 2) {
@@ -105,6 +103,17 @@ function setLedNumbers() {
     numberLedTree.setAttribute("class", "num-" + arrayNumbers[2]);
     numberLedTree.style.display = "inline-flex";
     numberLedTwo.style.display = "inline-flex";
+  }
+}
+
+function playAgain() {
+  if (getData()) {
+    result.innerHTML = "";
+    result.style.color = "#d5793d";
+    rematch.style.display = "none";
+    numberLedTwo.style.display = "none";
+    numberLedTree.style.display = "none";
+    numberLedOne.setAttribute("class", "num-0");
   }
 }
 
