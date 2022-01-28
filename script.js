@@ -30,44 +30,66 @@ async function getData() {
     .then((data) => {
       correctNumber = data.value;
     })
-    .catch((error) => {
-      console.log(error);
+    .catch(() => {
       getError();
       setLedNumbers();
     });
 }
 
 function getAnswer(number) {
-  let yourNumber = Number(number.value);
+  let selectedNumber = Number(number.value);
 
-  if (correctNumber === yourNumber) {
-    result.innerHTML = "Você acertou!!!!!";
-    result.style.color = "#5dba38";
-    rematch.style.display = "block";
+  if (correctNumber === selectedNumber) {
+    return getCorrectAnswer();
   }
 
-  if (yourNumber < correctNumber) {
+  if (selectedNumber < correctNumber) {
     return (result.innerHTML = "É maior");
   }
-  if (yourNumber > correctNumber) {
+  if (selectedNumber > correctNumber) {
     return (result.innerHTML = "É menor");
   }
+}
+
+function getCorrectAnswer() {
+  disableInputs();
+  result.innerHTML = "Você acertou!!!!!";
+  result.style.color = "#5dba38";
+  rematch.style.display = "block";
 }
 
 function getError() {
   objError = JSON.parse(errorValue);
   result.innerHTML = "ERRO";
   result.style.color = "#bf401f";
-  rematch.style.display = "inline-flex";
+  rematch.style.display = "block";
   splitToDigit(objError.StatusCode);
+  disableInputs();
+  console.log(`Error: ${objError.StatusCode} - ${objError.Error}`);
+}
+
+function disableInputs() {
+  num.disabled = true;
+  sub.disabled = true;
+  sub.style.cursor = "not-allowed";
+  sub.style.background = "#dddddd";
+  num.style.background = "#f5f5f5";
+}
+
+function enableInputs() {
+  num.disabled = false;
+  sub.disabled = false;
+  sub.style.cursor = "pointer";
+  sub.style.background = "linear-gradient(#da722d, #b7723a)";
+  num.style.background = "#ffffff";
 }
 
 function getNumber() {
   arrayNumbers = [];
-
   splitToDigit(num.value);
   setLedNumbers();
   getAnswer(num);
+  num.value = "";
 }
 
 function splitToDigit(number) {
@@ -107,14 +129,20 @@ function setLedNumbers() {
 }
 
 function playAgain() {
-  if (getData()) {
-    result.innerHTML = "";
-    result.style.color = "#d5793d";
-    rematch.style.display = "none";
-    numberLedTwo.style.display = "none";
-    numberLedTree.style.display = "none";
-    numberLedOne.setAttribute("class", "num-0");
-  }
+  result.innerHTML = "";
+  result.style.color = "#d5793d";
+  rematch.style.display = "none";
+  numberLedTwo.style.display = "none";
+  numberLedTree.style.display = "none";
+  numberLedOne.setAttribute("class", "num-0");
+  numberLedTwo.setAttribute("class", "num-0");
+  numberLedTree.setAttribute("class", "num-0");
+  initGame();
+  enableInputs();
 }
 
-getData();
+function initGame() {
+  getData();
+}
+
+initGame();
