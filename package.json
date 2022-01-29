@@ -1,0 +1,19 @@
+{
+  "name": "number-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristoferGuimaraes/number-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristoferGuimaraes/number-game/issues"
+  },
+  "homepage": "https://github.com/ChristoferGuimaraes/number-game#readme"
+}
