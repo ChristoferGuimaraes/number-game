@@ -4,13 +4,13 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "start": "node script.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ChristoferGuimaraes/number-game.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
