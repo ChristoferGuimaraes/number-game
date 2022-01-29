@@ -2,9 +2,9 @@
   "name": "number-game",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "server.js",
   "scripts": {
-    "start": "index.html"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ChristoferGuimaraes/number-game/issues"
   },
-  "homepage": "https://github.com/ChristoferGuimaraes/number-game#readme"
+  "homepage": "https://github.com/ChristoferGuimaraes/number-game#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
