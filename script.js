@@ -41,11 +41,11 @@ function getAnswer(number) {
     return getCorrectAnswer();
   }
 
-  if (selectedNumber < correctNumber) {
+  if (correctNumber > selectedNumber) {
     return (result.innerHTML = "É maior");
   }
-  
-  if (selectedNumber > correctNumber) {
+
+  if (correctNumber < selectedNumber) {
     return (result.innerHTML = "É menor");
   }
 }
@@ -88,11 +88,28 @@ function enableInputs() {
 }
 
 function getNumber() {
-  arrayNumbers = [];
-  splitToDigit(num.value);
-  setLedNumbers();
-  getAnswer(num);
-  num.value = "";
+  if (verifyNum()) {
+    arrayNumbers = [];
+    splitToDigit(num.value);
+    setLedNumbers();
+    getAnswer(num);
+    num.value = "";
+  }
+}
+
+function verifyNum() {
+  if (num.value > 300) {
+    result.style.color = "#bf401f";
+    result.innerHTML = "Menor que 300!";
+    return false;
+  }
+  if (num.value < 0) {
+    result.style.color = "#bf401f";
+    result.innerHTML = "Números positivos!";
+    return false;
+  }
+  result.style.color = "#d5793d";
+  return true;
 }
 
 function splitToDigit(number) {

@@ -32,11 +32,7 @@ body {
   font-size: 24px;
   margin-top: 50px;
   letter-spacing: -1px;
-  background: linear-gradient(#d5793d, #b7723a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
+  color: #d5793d;
 }
 
 .title-container:after {
@@ -48,6 +44,22 @@ body {
   margin-top: 10px;
   background-color: #ccc;
   border-radius: 5px;
+}
+
+#render-result {
+  margin-top: 80px;
+  font-weight: 700;
+  text-align: center;
+  height: 20px;
+  color: #d5793d;
+  font-size: 17px;
+}
+
+.numbers {
+  display: flex;
+  justify-content: center;
+  margin-top: -20px;
+  margin-bottom: 60px;
 }
 
 .inputs-container {
@@ -62,6 +74,7 @@ body {
   padding: 10px;
   border-radius: 4px;
   margin-right: 4px;
+  vertical-align: middle;
 }
 
 #sub {
@@ -75,28 +88,11 @@ body {
   font-size: 13px;
 }
 
-.numbers {
-  display: flex;
-  justify-content: center;
-  margin-top: -20px;
-  margin-bottom: 40px;
-}
-
-#render-result {
-  margin-top: 80px;
-  font-weight: 700;
-  text-align: center;
-  height: 20px;
-  color: #d5793d;
-  font-size: 17px;
-}
-
 .rematch-btn-container {
   display: flex;
   justify-content: center;
   margin-top: -25px;
   margin-bottom: 60px;
-  height: 39px;
 }
 
 #rematch-btn {
@@ -220,9 +216,9 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 500px) {
   .game-container {
-    width: 380px;
+    width: 350px;
     border: none;
-    background: none;
+    background: transparent;
   }
 
   body {
@@ -232,9 +228,6 @@ input::-webkit-inner-spin-button {
 
   .title-container {
     font-size: 30px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    letter-spacing: 1px;
   }
 
   #render-result {
@@ -243,16 +236,16 @@ input::-webkit-inner-spin-button {
 
   #num {
     width: 200px;
-    padding: 15px;
+    padding: 13px;
   }
 
   #sub {
-    padding: 13px 12px;
+    padding: 12px;
     font-size: 17px;
   }
 
   #rematch-btn {
-    font-size: 17px;
+    font-size: 16px;
     padding: 8px 10px;
   }
 }
