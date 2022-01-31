@@ -9,21 +9,21 @@ const numberLedTree = document.querySelector("#third-number");
 const rematch = document.querySelector("#rematch-btn");
 const rootCss = document.querySelector(":root");
 
-let errorValue;
 let arrayNumbers = [];
 let correctNumber;
+let err = false;
+let errorValue;
 let objError;
 
-async function getData() {
-  await fetch(url)
+function getData() {
+  fetch(url)
     .then((res) => {
       if (!res.ok) {
         return res.text().then((text) => {
           throw new Error((errorValue = text));
         });
-      } else {
-        return res.json();
       }
+      return res.json();
     })
     .then((data) => {
       correctNumber = data.value;
@@ -31,7 +31,6 @@ async function getData() {
     .catch((error) => {
       console.error(error);
       getError();
-      setLedNumbers();
     });
 }
 
@@ -45,6 +44,7 @@ function getAnswer(number) {
   if (selectedNumber < correctNumber) {
     return (result.innerHTML = "É maior");
   }
+  
   if (selectedNumber > correctNumber) {
     return (result.innerHTML = "É menor");
   }
@@ -59,12 +59,15 @@ function getCorrectAnswer() {
 }
 
 function getError() {
+  arrayNumbers = [];
+  err = true;
   objError = JSON.parse(errorValue);
   result.innerHTML = "ERRO";
   result.style.color = "#bf401f";
   rematch.style.display = "block";
   rootCss.style.setProperty("--smoothblack", "#bf401f");
   splitToDigit(objError.StatusCode);
+  setLedNumbers();
   disableInputs();
 }
 
@@ -99,45 +102,52 @@ function splitToDigit(number) {
 }
 
 function setLedNumbers() {
-  if (arrayNumbers.length === 1) {
-    numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
-    numberLedTwo.style.display = "none";
-    numberLedTree.style.display = "none";
-    allSegments.style.fill = "red";
-    changeColorSegments();
-  }
+  switch (arrayNumbers.length) {
+    case 1:
+      numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
+      numberLedTwo.style.display = "none";
+      numberLedTree.style.display = "none";
+      break;
 
-  if (arrayNumbers.length === 2) {
-    numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
-    numberLedTwo.setAttribute("class", "num-" + arrayNumbers[1]);
-    numberLedTwo.style.display = "inline-flex";
-    numberLedTree.style.display = "none";
-  }
+    case 2:
+      numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
+      numberLedTwo.setAttribute("class", "num-" + arrayNumbers[1]);
+      numberLedTwo.style.display = "inline-flex";
+      numberLedTree.style.display = "none";
+      break;
 
-  if (arrayNumbers.length === 3) {
-    numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
-    numberLedTwo.setAttribute("class", "num-" + arrayNumbers[1]);
-    numberLedTree.setAttribute("class", "num-" + arrayNumbers[2]);
-    numberLedTree.style.display = "inline-flex";
-    numberLedTwo.style.display = "inline-flex";
+    case 3:
+      numberLedOne.setAttribute("class", "num-" + arrayNumbers[0]);
+      numberLedTwo.setAttribute("class", "num-" + arrayNumbers[1]);
+      numberLedTree.setAttribute("class", "num-" + arrayNumbers[2]);
+      numberLedTree.style.display = "inline-flex";
+      numberLedTwo.style.display = "inline-flex";
+      break;
   }
 }
 
-function playAgain() {
-  result.innerHTML = "";
-  result.style.color = "#d5793d";
-  rematch.style.display = "none";
-  numberLedTwo.style.display = "none";
-  numberLedTree.style.display = "none";
-  rootCss.style.setProperty("--smoothblack", "#272b32");
+function resetDisplayLed() {
   numberLedOne.setAttribute("class", "num-0");
   numberLedTwo.setAttribute("class", "num-0");
   numberLedTree.setAttribute("class", "num-0");
+}
+
+function playAgain() {
   initGame();
-  enableInputs();
+  if (!err) {
+    result.innerHTML = "";
+    result.style.color = "#d5793d";
+    numberLedTwo.style.display = "none";
+    numberLedTree.style.display = "none";
+    rootCss.style.setProperty("--smoothblack", "#272b32");
+    enableInputs();
+    resetDisplayLed();
+    rematch.style.display = "none";
+  }
 }
 
 function initGame() {
+  err = false;
   getData();
 }
 
