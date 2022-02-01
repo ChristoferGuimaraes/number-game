@@ -77,6 +77,11 @@ body {
   vertical-align: middle;
 }
 
+#num:focus {
+ box-shadow: 0px 0px 4px 1px #da722d;
+ border: 1px solid #da722d9d;
+}
+
 #sub {
   padding: 11px;
   border: none;
