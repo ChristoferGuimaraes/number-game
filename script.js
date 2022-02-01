@@ -100,12 +100,12 @@ function getNumber() {
 function verifyNum() {
   if (num.value > 300) {
     result.style.color = "#bf401f";
-    result.innerHTML = "Menor que 300!";
+    result.innerHTML = "Máximo 300!";
     return false;
   }
-  if (num.value < 0) {
+  if (num.value < 1) {
     result.style.color = "#bf401f";
-    result.innerHTML = "Números positivos!";
+    result.innerHTML = "Mínimo 1!";
     return false;
   }
   result.style.color = "#d5793d";
