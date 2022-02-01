@@ -2,7 +2,7 @@
 
 # Qual é o número?
 
-Um projeto/desafio com intuito de desenvolver uma aplicação de adivinhação o qual o número aleatório é recebido através de uma API e a aplicação deve tratar os dados recebidos conforma as especificações do desafio.
+Um projeto/desafio com intuito de desenvolver uma aplicação de adivinhação o qual o número aleatório é recebido através de uma API e a aplicação deve tratar os dados recebidos conforme as especificações do desafio.
 
 ![number-ex](https://user-images.githubusercontent.com/32392449/151915610-ac273a9f-8487-43af-811d-421c00d56e78.png)
 
